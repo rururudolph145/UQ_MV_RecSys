@@ -1,3 +1,0 @@
-[submodule "models/DeepFM_with_PyTorch"]
-	path = models/DeepFM_with_PyTorch
-	url = https://github.com/chenxijun1029/DeepFM_with_PyTorch.git
