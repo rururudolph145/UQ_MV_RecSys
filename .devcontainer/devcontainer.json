@@ -1,0 +1,14 @@
+{
+  "name": "exp-wide-deep",
+  "build": { "dockerfile": "docker/wide_deep.Dockerfile", "context": "." },
+  "workspaceFolder": "/workspace",
+  "mounts": ["source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"],
+  "runArgs": ["--gpus", "all"],
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-toolsai.jupyter", "ms-python.python"]
+    }
+  },
+  "postCreateCommand": "python -m ipykernel install --user --name exp-wide-deep --display-name 'Python (exp-wide-deep)'"
+}
