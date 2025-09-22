@@ -1,0 +1,6 @@
+[submodule "models/IJCAI2019-NAML"]
+	path = models/IJCAI2019-NAML
+	url = https://github.com/wuch15/IJCAI2019-NAML.git
+[submodule "models/DeepFM_with_PyTorch"]
+	path = models/DeepFM_with_PyTorch
+	url = https://github.com/chenxijun1029/DeepFM_with_PyTorch.git
