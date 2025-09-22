@@ -1,14 +1,26 @@
 {
-  "name": "exp-wide-deep",
-  "build": { "dockerfile": "docker/wide_deep.Dockerfile", "context": "." },
+  "name": "exp-wide-deep (prebuilt)",
+  "image": "uqmv:wd",
+
   "workspaceFolder": "/workspace",
-  "mounts": ["source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"],
-  "runArgs": ["--gpus", "all"],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  "runArgs": ["--gpus", "all"],               // remove if no GPU on host
   "remoteUser": "root",
+
+  "containerEnv": {
+    "PYTHONPATH": "/workspace"
+  },
+
   "customizations": {
     "vscode": {
-      "extensions": ["ms-toolsai.jupyter", "ms-python.python"]
+      "extensions": ["ms-toolsai.jupyter", "ms-python.python"],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python"
+      }
     }
   },
-  "postCreateCommand": "python -m ipykernel install --user --name exp-wide-deep --display-name 'Python (exp-wide-deep)'"
+
+  // Register a container-side Jupyter kernel tied to /usr/bin/python
+  "postCreateCommand": "python -m ipykernel install --sys-prefix --name exp-wide-deep --display-name 'Python (exp-wide-deep)'",
 }
